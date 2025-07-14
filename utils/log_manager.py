@@ -49,7 +49,7 @@ def get_logger(name="log_manager", json_logging=False):
     stream_handler.setLevel(LOG_LEVEL)
     
     # formatter
-    formatter = JsonFormatter if json_logging else logging.Formatter(LOG_FORMAT)
+    formatter = JsonFormatter() if json_logging else logging.Formatter(LOG_FORMAT)
     
     file_handler.setFormatter(formatter)
     stream_handler.setFormatter(formatter)
