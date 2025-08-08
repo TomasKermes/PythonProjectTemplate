@@ -40,6 +40,10 @@ def get_logger(name="log_manager", json_logging=False):
         return logger
     logger.setLevel(LOG_LEVEL)
     
+    log_dir = os.path.dirname(LOG_FILE)
+    if log_dir and not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    
     #File Handler with rotation
     file_handler = RotatingFileHandler(LOG_FILE, maxBytes=MAX_LOG_SIZE, backupCount=BACKUP_COUNT)
     file_handler.setLevel(LOG_LEVEL)
